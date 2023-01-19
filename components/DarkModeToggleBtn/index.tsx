@@ -4,7 +4,7 @@ import { tw } from 'utils/tailwindMerge';
 
 export function DarkModeToggleBtn({ children, className, ...restProps }: DarkModeBtnProps<'label'>) {
   const handleDarkModeChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'light';
+    localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.classList.toggle('dark', localStorage.theme === 'dark');
   };
   return (

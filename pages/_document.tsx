@@ -13,7 +13,7 @@ export default function Document() {
       <Head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }}></script>
       </Head>
-      <body className="bg-lightGray text-black dark:bg-black dark:text-white">
+      <body className="bg-bg text-text">
         <Main />
         <NextScript />
       </body>

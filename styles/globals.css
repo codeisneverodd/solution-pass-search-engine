@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #f5f5f7;
+    --color-fg: #ffffff;
+    --color-text: #202124;
+  }
+
+  :root[class~='dark'] {
+    --color-bg: #202124;
+    --color-fg: #303134;
+    --color-text: #e8eaed;
+  }
+}

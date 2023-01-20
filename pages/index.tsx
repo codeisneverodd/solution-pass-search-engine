@@ -1,5 +1,5 @@
 import { Box, SearchHeader } from 'components';
-import { SelectProbCard } from 'components/SelectProbCard';
+import { ResultTypeSelectBar } from 'components/ResultTypeSelectBar';
 import Head from 'next/head';
 import { tw } from 'utils/tailwindMerge';
 import { DarkModeToggleBtn } from '../components/DarkModeToggleBtn';
@@ -21,11 +21,11 @@ export default function Home() {
         </Box>
         <Box className="mt-5">하이</Box>
         <SearchHeader />
-        <SelectProbCard />
         <SideSection>
           <SideSection.SelectProbCard />
           <SideSection.AdCard />
         </SideSection>
+        <ResultTypeSelectBar />
       </main>
     </>
   );

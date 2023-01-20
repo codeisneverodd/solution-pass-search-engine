@@ -21,4 +21,7 @@
     justify-content: center;
     align-items: center;
   }
+  .no-style-btn {
+    @apply h-max border-none bg-none p-0 outline-none;
+  }
 }

@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-pretendard)', ...fontFamily.sans],
+        pretendard: 'var(--font-pretendard)',
+        bungee: 'var(--font-bungee)',
       },
       colors: {
         black: '#000000',
@@ -28,9 +30,7 @@ module.exports = {
           5: '#c658e1',
         },
       },
-      fontFamily: {
-        pretendard: 'Pretendard',
-      },
+
       boxShadow: {
         google: '0px 2px 5px 1px rgba(64, 60, 67, 0.16)',
       },

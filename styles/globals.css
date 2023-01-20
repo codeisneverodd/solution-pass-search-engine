@@ -15,3 +15,10 @@
     --color-text: #e8eaed;
   }
 }
+@layer utilities {
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

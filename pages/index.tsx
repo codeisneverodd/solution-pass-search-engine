@@ -1,7 +1,9 @@
-import { Box } from 'components';
+import { Box, SearchHeader } from 'components';
+import { SelectProbCard } from 'components/SelectProbCard';
 import Head from 'next/head';
 import { tw } from 'utils/tailwindMerge';
-import { DarkModeToggleBtn } from './components/DarkModeToggleBtn';
+import { DarkModeToggleBtn } from '../components/DarkModeToggleBtn';
+import { SideSection } from '../components/SideSection/index';
 
 export default function Home() {
   return (
@@ -18,6 +20,12 @@ export default function Home() {
           <DarkModeToggleBtn />
         </Box>
         <Box className="mt-5">하이</Box>
+        <SearchHeader />
+        <SelectProbCard />
+        <SideSection>
+          <SideSection.SelectProbCard />
+          <SideSection.AdCard />
+        </SideSection>
       </main>
     </>
   );

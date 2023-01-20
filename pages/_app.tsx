@@ -7,6 +7,7 @@ const myFont = localFont({
   src: './fonts/PretendardVariable.woff2',
   variable: '--font-pretendard',
 });
+
 const bungee = Bungee({ weight: '400', variable: '--font-bungee', display: 'swap' });
 
 export default function App({ Component, pageProps }: AppProps) {

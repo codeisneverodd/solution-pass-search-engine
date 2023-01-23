@@ -8,7 +8,10 @@ type SearchHeaderProps<T extends React.ElementType> = {} & Component<T>;
 
 export function SearchHeader({ children, className, ...restProps }: SearchHeaderProps<'header'>) {
   return (
-    <header className={tw('flex h-[80px] min-w-[1280px] items-center  bg-bg pl-5 pr-4 ', className)} {...restProps}>
+    <header
+      className={tw('fixed top-0 flex h-[80px] w-full min-w-[1280px] items-center  bg-bg pl-5 pr-4 ', className)}
+      {...restProps}
+    >
       <Link className="mr-20 " href="/">
         <Image src={logoImg} alt="Solution Pass 로고" width={36} height={36} />
       </Link>

@@ -37,7 +37,7 @@ function SelectProbCard({ children, className, ...restProps }: SelectProbCardPro
   return (
     <Card className={tw('', className)} {...restProps}>
       <h3 className="mb-4 text-[18px] font-bold">선택된 문제</h3>
-      <div className="flex">
+      <div className="flex items-center">
         <LevelCircle level={data.level} className="mr-6" />
         <span className="flex-1">{data.title}</span>
         <Link href="/write" className="mr-3">

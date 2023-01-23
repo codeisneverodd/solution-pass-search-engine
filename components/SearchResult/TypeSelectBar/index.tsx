@@ -6,11 +6,11 @@ export function TypeSelectBar({ children, className, ...restProps }: TypeSelectB
   const types: SearchResultType[] = ['prob', 'sol', 'write'];
   type Data = { selectedType: SearchResultType };
   const data: Data = {
-    selectedType: 'write',
+    selectedType: 'prob',
   };
   return (
-    <div>
-      <div className={tw('flex h-[32px] w-[572px] gap-4 bg-bg', className)} {...restProps}>
+    <div className={tw('mb-3', className)}>
+      <div className="flex h-[32px] w-[572px] gap-4 bg-bg" {...restProps}>
         {types.map((type) => (
           <TypeCard key={type} type={type} className={type === data.selectedType ? 'text-blue' : ''} />
         ))}

@@ -6,6 +6,7 @@ import { Bungee } from '@next/font/google';
 const myFont = localFont({
   src: './fonts/PretendardVariable.woff2',
   variable: '--font-pretendard',
+  display: 'swap',
 });
 
 const bungee = Bungee({ weight: '400', variable: '--font-bungee', display: 'swap' });

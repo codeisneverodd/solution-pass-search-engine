@@ -1,5 +1,10 @@
 import { Box, SearchHeader } from 'components';
-import { ResultTypeSelectBar } from 'components/ResultTypeSelectBar';
+import { SearchLayout } from 'components/SearchLayout';
+import { SearchResult } from 'components/SearchResult';
+import { ResultProb } from 'components/SearchResult/ResultProb';
+import { ResultSol } from 'components/SearchResult/ResultSol';
+import { ResultWrite } from 'components/SearchResult/ResultWrite';
+import { TypeSelectBar } from 'components/SearchResult/TypeSelectBar';
 import Head from 'next/head';
 import { tw } from 'utils/tailwindMerge';
 import { DarkModeToggleBtn } from '../components/DarkModeToggleBtn';
@@ -14,19 +19,24 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="px-4 pt-8">
-        <Box className="mt-5 flex justify-between">
-          <h1 className="text-3xl">홈</h1>
-          <DarkModeToggleBtn />
-        </Box>
-        <Box className="mt-5">하이</Box>
-        <SearchHeader />
-        <SideSection>
-          <SideSection.SelectProbCard />
-          <SideSection.AdCard />
-        </SideSection>
-        <ResultTypeSelectBar />
-      </main>
+
+      <SearchLayout>
+        <SearchLayout.Main>
+          <SearchResult>
+            <ResultProb />
+          </SearchResult>
+        </SearchLayout.Main>
+        <SearchLayout.Aside>
+          <SideSection>
+            <SideSection.SelectProbCard />
+            <SideSection.AdCard />
+          </SideSection>
+        </SearchLayout.Aside>
+      </SearchLayout>
+      <Box className="fixed bottom-0 flex w-full justify-between">
+        <h1 className="text-3xl">Dev Tool</h1>
+        <DarkModeToggleBtn />
+      </Box>
     </>
   );
 }

@@ -1,5 +1,3 @@
-type ProbLevel = 0 | 1 | 2 | 3 | 4 | 5;
-type SearchResultType = 'prob' | 'sol' | 'write';
 /**
  * - prob: 문제
  * - sol: 정답
@@ -7,6 +5,8 @@ type SearchResultType = 'prob' | 'sol' | 'write';
  */
 type SearchResult = 'prob' | 'sol' | 'write';
 type GitHubImg = `https://avatars.githubusercontent.com/${string}`;
+
+export const isGitHubImg = (str: string): str is GitHubImg => str.startsWith('https://avatars.githubusercontent.com');
 
 //Fetched Data
 type Prob = {

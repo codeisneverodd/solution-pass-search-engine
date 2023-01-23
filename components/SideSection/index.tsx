@@ -4,6 +4,8 @@ import { tw } from 'utils/tailwindMerge';
 import { PencilSquareIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import AdProgrammersImg from 'public/ads/ad_programmers.png';
+import { useSearch } from '../../hooks/global/useSearch';
+import { dummyData } from 'pages/dummy';
 
 type SideSectionProps<T extends React.ElementType> = {} & Component<T>;
 
@@ -28,24 +30,27 @@ function Card({ children, className, ...restProps }: SectionCardProps<'div'>) {
 type SelectProbCardProps<T extends React.ElementType> = {} & Component<T>;
 
 function SelectProbCard({ children, className, ...restProps }: SelectProbCardProps<typeof Card>) {
-  type Data = { level: ProbLevel; title: string };
+  const { selectedProbId } = useSearch();
+  const data = dummyData.probs.find((p) => p.id === selectedProbId);
 
-  const data: Data = {
-    level: 3,
-    title: '징검다리',
-  };
   return (
     <Card className={tw('', className)} {...restProps}>
       <h3 className="mb-4 text-[18px] font-bold">선택된 문제</h3>
       <div className="flex items-center">
-        <LevelCircle level={data.level} className="mr-6" />
-        <span className="flex-1">{data.title}</span>
-        <Link href="/write" className="mr-3">
-          <PencilSquareIcon className="h-6 w-6" />
-        </Link>
-        <button className="no-style-btn">
-          <XCircleIcon className="h-6 w-6" />
-        </button>
+        {data ? (
+          <>
+            <LevelCircle level={data.level} className="mr-6" />
+            <span className="flex-1">{data.title}</span>
+            <Link href="/write" className="mr-3">
+              <PencilSquareIcon className="h-6 w-6" />
+            </Link>
+            <button className="no-style-btn">
+              <XCircleIcon className="h-6 w-6" />
+            </button>
+          </>
+        ) : (
+          <div></div>
+        )}
       </div>
     </Card>
   );

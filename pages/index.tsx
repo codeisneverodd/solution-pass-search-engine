@@ -1,16 +1,13 @@
-import { Box, SearchHeader } from 'components';
+import { Box } from 'components';
 import { SearchLayout } from 'components/SearchLayout';
 import { SearchResult } from 'components/SearchResult';
 import { ResultProb } from 'components/SearchResult/ResultProb';
-import { ResultSol } from 'components/SearchResult/ResultSol';
-import { ResultWrite } from 'components/SearchResult/ResultWrite';
-import { TypeSelectBar } from 'components/SearchResult/TypeSelectBar';
 import Head from 'next/head';
-import { tw } from 'utils/tailwindMerge';
 import { DarkModeToggleBtn } from '../components/DarkModeToggleBtn';
 import { SideSection } from '../components/SideSection/index';
+import { DummyData, dummyData } from './dummy';
 
-export default function Home() {
+export default function Home({ probs, sols, user }: DummyData) {
   return (
     <>
       <Head>
@@ -21,6 +18,7 @@ export default function Home() {
       </Head>
 
       <SearchLayout>
+        <SearchLayout.Header />
         <SearchLayout.Main>
           <SearchResult>
             <ResultProb />
@@ -39,4 +37,10 @@ export default function Home() {
       </Box>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: dummyData,
+  };
 }

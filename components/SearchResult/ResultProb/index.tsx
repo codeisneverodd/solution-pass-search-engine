@@ -2,32 +2,14 @@ import { tw } from 'utils/tailwindMerge';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { levelColors } from 'styles/colors';
+import { resultProbsAtom, useSearch } from 'hooks/global/useSearch';
+import { useRecoilValue, useResetRecoilState, useRecoilState } from 'recoil';
+import { useEffect } from 'react';
 type ResultProbProps<T extends React.ElementType> = {} & Component<T>;
 
 export function ResultProb({ children, className, ...restProps }: ResultProbProps<'table'>) {
-  interface Data {
-    level: ProbLevel;
-    title: string;
-    id: string;
-  }
-  const data = [
-    {
-      level: 3,
-      title: '징검다리',
-      id: '123123',
-    },
-    {
-      level: 2,
-      title: '방의 개수',
-      id: '12455112',
-    },
-    ,
-    {
-      level: 1,
-      title: '시험장 나누기',
-      id: '55533',
-    },
-  ] as Data[];
+  const { resultProbs, select } = useSearch();
+
   const styles = {
     row: 'flex items-center bg-fg border-b-[1px] border-gray',
     col1: 'w-[32px] text-center ml-4',
@@ -45,10 +27,11 @@ export function ResultProb({ children, className, ...restProps }: ResultProbProp
         </tr>
       </thead>
       <tbody>
-        {data.map(({ level, title, id }, i) => (
+        {resultProbs.map(({ level, title, id }, i) => (
           <tr
             key={id}
-            className={tw('h-11 text-[16px]', i === data.length - 1 ? 'rounded-b border-none' : '', styles.row)}
+            className={tw('h-11 text-[16px]', i === resultProbs.length - 1 ? 'rounded-b border-none' : '', styles.row)}
+            onClick={() => select(id)}
           >
             <td className={tw('font-bold', styles.col1)} style={{ color: levelColors[level] }}>
               {level}
@@ -62,7 +45,6 @@ export function ResultProb({ children, className, ...restProps }: ResultProbProp
           </tr>
         ))}
       </tbody>
-      {children}
     </table>
   );
 }

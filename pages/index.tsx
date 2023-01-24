@@ -1,7 +1,6 @@
 import { Box } from 'components';
 import { SearchLayout } from 'components/SearchLayout';
 import { SearchResult } from 'components/SearchResult';
-import { ResultProb } from 'components/SearchResult/ResultProb';
 import Head from 'next/head';
 import { DarkModeToggleBtn } from '../components/DarkModeToggleBtn';
 import { SideSection } from '../components/SideSection/index';
@@ -20,9 +19,7 @@ export default function Home({ probs, sols, user }: DummyData) {
       <SearchLayout>
         <SearchLayout.Header />
         <SearchLayout.Main>
-          <SearchResult>
-            <ResultProb />
-          </SearchResult>
+          <SearchResult />
         </SearchLayout.Main>
         <SearchLayout.Aside>
           <SideSection>

@@ -1,4 +1,5 @@
 import { chosungIncludes, hangulIncludes } from '@toss/hangul';
+import { useSearchResultType } from 'components/SearchResult/hooks/useSearchResult';
 import { dummyData } from 'pages/dummy';
 import { atom, useRecoilState } from 'recoil';
 
@@ -31,8 +32,8 @@ export const useSearch: UseSearch = () => {
   const [resultProbs, setResultProbs] = useRecoilState(resultProbsAtom);
   const [resultSols, setResultSols] = useRecoilState(resultSolsAtom);
   const [selectedProbId, setSelectedProbId] = useRecoilState(selectedProbIdAtom);
-
   const { probs, sols } = dummyData;
+  const { select: selectType } = useSearchResultType();
 
   const search: Search = (keyword) => {
     if (keyword === '') return setResultProbs(probs);
@@ -46,7 +47,8 @@ export const useSearch: UseSearch = () => {
   };
   const select: Select = (probId) => {
     setSelectedProbId(probId);
-    setResultSols(sols.filter((d) => d.probId === selectedProbId));
+    setResultSols(sols.filter((d) => d.probId === probId));
+    selectType('sol');
   };
 
   return { resultProbs, resultSols, selectedProbId, search, select };

@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 import { tw } from 'utils/tailwindMerge';
 import defaultUserImg from 'public/icons/user.png';
 import logoImg from 'public/logo_square.png';
+import { useSearchResultType } from 'components/SearchResult/hooks/useSearchResult';
 
 type SearchLayoutProps<T extends React.ElementType> = {} & Component<T>;
 
@@ -21,6 +22,7 @@ type SearchHeaderProps<T extends React.ElementType> = {} & Component<T>;
 
 function Header({ children, className, ...restProps }: SearchHeaderProps<'header'>) {
   const { search } = useSearch();
+  const { select, selectedType } = useSearchResultType();
 
   return (
     <header
@@ -34,6 +36,7 @@ function Header({ children, className, ...restProps }: SearchHeaderProps<'header
         className="h-[40px] w-[620px] rounded-full bg-fg pl-6 text-[16px] shadow-google outline-none"
         onChange={(e) => {
           search(e.target.value);
+          if (selectedType !== 'prob') select('prob');
         }}
       />
       <Link className="ml-auto" href="/">

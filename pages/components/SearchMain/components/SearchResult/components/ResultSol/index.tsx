@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import defaultUserImg from 'public/icons/user.png';
 import { tw } from 'utils/tailwindMerge';
-import { levelColors } from '../../../../../../../../styles/colors';
+import { levelColors } from '../../../../../../../styles/colors';
 
 type ResultSolProps<T extends React.ElementType> = {} & Component<T>;
 

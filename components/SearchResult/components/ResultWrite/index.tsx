@@ -1,18 +1,17 @@
+import { LevelCircle } from 'components/LevelCircle';
+import { dummyData } from 'hooks/global/useDummyData';
+import { useProbSelect } from 'hooks/global/useProbSelect';
 import Image from 'next/image';
 import Link from 'next/link';
-import { tw } from 'utils/tailwindMerge';
 import defaultUserImg from 'public/icons/user.png';
-import { LevelCircle } from 'components/LevelCircle';
-import { useUser } from 'hooks/global/useUser';
-import { useSearch } from 'hooks/global/useSearch';
-import { dummyData } from 'pages/dummy';
+import { tw } from 'utils/tailwindMerge';
 
 type ResultWriteProps<T extends React.ElementType> = {} & Component<T>;
 
 export function ResultWrite({ children, className, ...restProps }: ResultWriteProps<'div'>) {
-  const { user } = useUser();
-  const { selectedProbId } = useSearch();
-  const selectedProb = dummyData.probs.find((prob) => prob.id == selectedProbId);
+  const { user } = dummyData;
+
+  const { selectedProb } = useProbSelect();
 
   return (
     <div className={tw('flex', className)} {...restProps}>

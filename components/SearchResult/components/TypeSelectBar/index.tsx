@@ -1,28 +1,30 @@
-import { tw } from 'utils/tailwindMerge';
 import { BookOpenIcon, CodeBracketIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
-import { useRecoilState } from 'recoil';
-import { useSearchResultType } from '../hooks/useSearchResult';
+import { useProbSelect } from 'hooks/global/useProbSelect';
+import { useSearchResultType } from 'hooks/global/useSearchResultType';
+import { tw } from 'utils/tailwindMerge';
+
 type TypeSelectBarProps<T extends React.ElementType> = {} & Component<T>;
 
 export function TypeSelectBar({ children, className, ...restProps }: TypeSelectBarProps<'div'>) {
   const types: SearchResult[] = ['prob', 'sol', 'write'];
-  const { selectedType, select } = useSearchResultType();
+  const { searchResultType, selectSearchResultType } = useSearchResultType();
+
   return (
     <div className={tw('mb-3', className)}>
       <div className="flex h-[32px] w-[572px] gap-4 bg-bg" {...restProps}>
         {types.map((type) => (
           <TypeCard
-            onClick={() => select(type)}
+            onClick={() => selectSearchResultType(type)}
             key={type}
             type={type}
-            className={tw('cursor-pointer', type === selectedType ? 'text-blue' : '')}
+            className={tw('cursor-pointer', type === searchResultType ? 'text-blue' : '')}
           />
         ))}
       </div>
       <Slider
         className="transition-all"
         style={{
-          transform: `translateX(${types.findIndex((t) => t === selectedType) * 60}px)`,
+          transform: `translateX(${types.findIndex((t) => t === searchResultType) * 60}px)`,
         }}
       />
     </div>

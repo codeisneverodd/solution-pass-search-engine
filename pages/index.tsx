@@ -1,4 +1,4 @@
-import { Box } from 'components';
+import { Box } from 'components/Box';
 import { SearchLayout } from 'components/SearchLayout';
 import { SearchResult } from 'components/SearchResult';
 import Head from 'next/head';

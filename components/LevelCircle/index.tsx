@@ -2,7 +2,7 @@ import { levelColors } from 'styles/colors';
 import { tw } from 'utils/tailwindMerge';
 
 type LevelCircleProps<T extends React.ElementType> = {
-  level: ProbLevel;
+  level: Prob['level'];
 } & Component<T>;
 
 export function LevelCircle({ children, className, level, ...restProps }: LevelCircleProps<'div'>) {

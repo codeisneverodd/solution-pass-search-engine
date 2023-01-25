@@ -1,11 +1,11 @@
+import { useProbSearch } from 'hooks/global/useProbSearch';
+import { useSearchResultType } from 'hooks/global/useSearchResultType';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearch } from 'hooks/global/useSearch';
-import { RecoilRoot } from 'recoil';
-import { tw } from 'utils/tailwindMerge';
 import defaultUserImg from 'public/icons/user.png';
 import logoImg from 'public/logo_square.png';
-import { useSearchResultType } from 'components/SearchResult/hooks/useSearchResult';
+import { RecoilRoot } from 'recoil';
+import { tw } from 'utils/tailwindMerge';
 
 type SearchLayoutProps<T extends React.ElementType> = {} & Component<T>;
 
@@ -21,8 +21,8 @@ export function SearchLayout({ children, className, ...restProps }: SearchLayout
 type SearchHeaderProps<T extends React.ElementType> = {} & Component<T>;
 
 function Header({ children, className, ...restProps }: SearchHeaderProps<'header'>) {
-  const { search } = useSearch();
-  const { select, selectedType } = useSearchResultType();
+  const { searchProbs } = useProbSearch();
+  const { selectSearchResultType, searchResultType } = useSearchResultType();
 
   return (
     <header
@@ -35,8 +35,8 @@ function Header({ children, className, ...restProps }: SearchHeaderProps<'header
       <input
         className="h-[40px] w-[620px] rounded-full bg-fg pl-6 text-[16px] shadow-google outline-none"
         onChange={(e) => {
-          search(e.target.value);
-          if (selectedType !== 'prob') select('prob');
+          searchProbs(e.target.value);
+          if (searchResultType !== 'prob') selectSearchResultType('prob');
         }}
       />
       <Link className="ml-auto" href="/">
@@ -68,5 +68,4 @@ function Aside({ children, className, ...restProps }: AsideProps<'aside'>) {
 
 SearchLayout.Header = Header;
 SearchLayout.Main = Main;
-
 SearchLayout.Aside = Aside;

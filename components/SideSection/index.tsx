@@ -1,11 +1,10 @@
-import { LevelCircle } from 'components/LevelCircle';
-import Link from 'next/link';
-import { tw } from 'utils/tailwindMerge';
 import { PencilSquareIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import { LevelCircle } from 'components/LevelCircle';
+import { useProbSelect } from 'hooks/global/useProbSelect';
 import Image from 'next/image';
+import Link from 'next/link';
 import AdProgrammersImg from 'public/ads/ad_programmers.png';
-import { useSearch } from '../../hooks/global/useSearch';
-import { dummyData } from 'pages/dummy';
+import { tw } from 'utils/tailwindMerge';
 
 type SideSectionProps<T extends React.ElementType> = {} & Component<T>;
 
@@ -30,17 +29,16 @@ function Card({ children, className, ...restProps }: SectionCardProps<'div'>) {
 type SelectProbCardProps<T extends React.ElementType> = {} & Component<T>;
 
 function SelectProbCard({ children, className, ...restProps }: SelectProbCardProps<typeof Card>) {
-  const { selectedProbId } = useSearch();
-  const data = dummyData.probs.find((p) => p.id === selectedProbId);
+  const { selectedProb } = useProbSelect();
 
   return (
     <Card className={tw('', className)} {...restProps}>
       <h3 className="mb-4 text-[18px] font-bold">선택된 문제</h3>
       <div className="flex items-center">
-        {data ? (
+        {selectedProb ? (
           <>
-            <LevelCircle level={data.level} className="mr-6" />
-            <span className="flex-1">{data.title}</span>
+            <LevelCircle level={selectedProb.level} className="mr-6" />
+            <span className="flex-1">{selectedProb.title}</span>
             <Link href="/write" className="mr-3">
               <PencilSquareIcon className="h-6 w-6" />
             </Link>

@@ -1,16 +1,16 @@
 import { DocumentDuplicateIcon } from '@heroicons/react/24/solid';
-import { dummyData } from 'hooks/global/useDummyData';
-import { useProbSelect } from 'hooks/global/useProbSelect';
+import { dummyData } from 'hooks/common/useDummyData';
+import { useSelectProb } from 'hooks/search/useSelectProb';
 import Image from 'next/image';
 import Link from 'next/link';
 import defaultUserImg from 'public/icons/user.png';
 import { tw } from 'utils/tailwindMerge';
-import { levelColors } from '../../../../styles/colors';
+import { levelColors } from '../../../../../../../../styles/colors';
 
 type ResultSolProps<T extends React.ElementType> = {} & Component<T>;
 
 export function ResultSol({ children, className, ...restProps }: ResultSolProps<'div'>) {
-  const { selectedProb } = useProbSelect();
+  const { selectedProb } = useSelectProb();
   const { user, sols } = dummyData;
 
   return (

@@ -1,14 +1,14 @@
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { useProbSearch } from 'hooks/global/useProbSearch';
-import { useProbSelect } from 'hooks/global/useProbSelect';
+import { useSearchProb } from 'hooks/search/useSearchProb';
+import { useSelectProb } from 'hooks/search/useSelectProb';
 import Link from 'next/link';
 import { levelColors } from 'styles/colors';
 import { tw } from 'utils/tailwindMerge';
 type ResultProbProps<T extends React.ElementType> = {} & Component<T>;
 
 export function ResultProb({ children, className, ...restProps }: ResultProbProps<'table'>) {
-  const { searchedProbs } = useProbSearch();
-  const { selectProb } = useProbSelect();
+  const { searchedProbs } = useSearchProb();
+  const { selectProb } = useSelectProb();
   const styles = {
     row: 'flex items-center bg-fg border-b-[1px] border-gray',
     col1: 'w-[32px] text-center ml-4',

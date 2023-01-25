@@ -1,6 +1,6 @@
 import { LevelCircle } from 'components/LevelCircle';
-import { dummyData } from 'hooks/global/useDummyData';
-import { useProbSelect } from 'hooks/global/useProbSelect';
+import { dummyData } from 'hooks/common/useDummyData';
+import { useSelectProb } from 'hooks/search/useSelectProb';
 import Image from 'next/image';
 import Link from 'next/link';
 import defaultUserImg from 'public/icons/user.png';
@@ -11,7 +11,7 @@ type ResultWriteProps<T extends React.ElementType> = {} & Component<T>;
 export function ResultWrite({ children, className, ...restProps }: ResultWriteProps<'div'>) {
   const { user } = dummyData;
 
-  const { selectedProb } = useProbSelect();
+  const { selectedProb } = useSelectProb();
 
   return (
     <div className={tw('flex', className)} {...restProps}>

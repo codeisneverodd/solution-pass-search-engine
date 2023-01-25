@@ -1,13 +1,13 @@
 import { BookOpenIcon, CodeBracketIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
-import { useProbSelect } from 'hooks/global/useProbSelect';
-import { useSearchResultType } from 'hooks/global/useSearchResultType';
+import { useSelectProb } from 'hooks/search/useSelectProb';
+import { useSearchType } from 'hooks/search/useSearchType';
 import { tw } from 'utils/tailwindMerge';
 
 type TypeSelectBarProps<T extends React.ElementType> = {} & Component<T>;
 
 export function TypeSelectBar({ children, className, ...restProps }: TypeSelectBarProps<'div'>) {
-  const types: SearchResult[] = ['prob', 'sol', 'write'];
-  const { searchResultType, selectSearchResultType } = useSearchResultType();
+  const types: SearchType[] = ['prob', 'sol', 'write'];
+  const { searchType: searchResultType, selectSearchType: selectSearchResultType } = useSearchType();
 
   return (
     <div className={tw('mb-3', className)}>
@@ -32,10 +32,10 @@ export function TypeSelectBar({ children, className, ...restProps }: TypeSelectB
 }
 
 type TypeCardProps<T extends React.ElementType> = {
-  type: SearchResult;
+  type: SearchType;
 } & Component<T>;
 
-type Data = { [key in SearchResult]: { Icon: typeof BookOpenIcon; title: string } };
+type Data = { [key in SearchType]: { Icon: typeof BookOpenIcon; title: string } };
 
 const data: Data = {
   prob: {

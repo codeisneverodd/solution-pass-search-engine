@@ -3,7 +3,7 @@
  * - sol: 정답
  * - write: 제출
  */
-type SearchResult = 'prob' | 'sol' | 'write';
+type SearchType = 'prob' | 'sol' | 'write';
 type GitHubImg = `https://avatars.githubusercontent.com/${string}`;
 
 //Fetched Data

@@ -1,9 +1,8 @@
 import { Box } from 'components/Box';
 import { SearchLayout } from 'components/SearchLayout';
-import { SearchResult } from 'components/SearchResult';
+import { SearchResult } from 'components/SearchLayout/components/SearchMain/components/SearchResult';
 import Head from 'next/head';
 import { DarkModeToggleBtn } from '../components/DarkModeToggleBtn';
-import { SideSection } from '../components/SideSection/index';
 import { DummyData, dummyData } from './dummy';
 
 export default function Home({ probs, sols, user }: DummyData) {
@@ -19,13 +18,11 @@ export default function Home({ probs, sols, user }: DummyData) {
       <SearchLayout>
         <SearchLayout.Header />
         <SearchLayout.Main>
-          <SearchResult />
+          <SearchLayout.Main.Result />
         </SearchLayout.Main>
         <SearchLayout.Aside>
-          <SideSection>
-            <SideSection.SelectProbCard />
-            <SideSection.AdCard />
-          </SideSection>
+          <SearchLayout.Aside.SelectProbCard />
+          <SearchLayout.Aside.AdCard />
         </SearchLayout.Aside>
       </SearchLayout>
       <Box className="fixed bottom-0 flex w-full justify-between">

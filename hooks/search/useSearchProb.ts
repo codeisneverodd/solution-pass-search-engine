@@ -1,13 +1,13 @@
 import { chosungIncludes, hangulIncludes } from '@toss/hangul';
 import { atom, useRecoilState, useResetRecoilState } from 'recoil';
-import { dummyData } from './useDummyData';
+import { dummyData } from '../common/useDummyData';
 
 export const resultProbsAtom = atom({
   key: 'resultProbsAtom',
   default: dummyData.probs as Prob[],
 });
 
-export const useProbSearch = () => {
+export const useSearchProb = () => {
   const [searchedProbs, setSearchedProbs] = useRecoilState(resultProbsAtom);
   const resetResult = useResetRecoilState(resultProbsAtom);
 

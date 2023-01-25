@@ -1,15 +1,15 @@
 import { atom, useRecoilState, useSetRecoilState } from 'recoil';
-import { dummyData } from './useDummyData';
-import { useSearchResultType } from './useSearchResultType';
+import { dummyData } from '../common/useDummyData';
+import { useSearchType } from './useSearchType';
 
 const selectedProbAtom = atom({
   key: 'selectedProbAtom',
   default: null as Prob | null,
 });
 
-export const useProbSelect = () => {
+export const useSelectProb = () => {
   const [selectedProb, setSelectedProb] = useRecoilState(selectedProbAtom);
-  const { selectSearchResultType } = useSearchResultType();
+  const { selectSearchType: selectSearchResultType } = useSearchType();
 
   const selectProb = (probId: Prob['id']) => {
     const prob = dummyData.probs.find((prob) => prob.id === probId);
